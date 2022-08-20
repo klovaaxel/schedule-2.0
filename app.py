@@ -6,7 +6,7 @@ from components.general import currentWeek
 
 app = Flask(__name__)
 
-@app.route('/schedules', methods=('GET', 'POST'))
+@app.route('/schedule', methods=('GET', 'POST'))
 def schedules():
 
     # Week dropdown and url param
@@ -40,9 +40,12 @@ def schedules():
         selectedWeek = selectedWeek,
     )
 
-@app.route('/schedule/<string:group>/<string:course>')
-def schedule(group, course):
-    return render_template('shedule.html')
+@app.route('/schedule/<string:groupID>/<string:course>')
+def schedule(groupID, course):
+    return render_template('schedule.html',
+        course = groups[groupID]['courses'][course],
+        selectedWeek = int(request.args.get('week'))
+    )
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
