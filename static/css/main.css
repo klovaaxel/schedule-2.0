@@ -4,6 +4,8 @@
     --accent-color: #dead40;
     --contrast-color: #fff;
     --alarm-color: #da0646;
+    --info-color: #e4f9e4;
+    --text-color: #272932;
 }
 
 /*General*/
@@ -43,7 +45,7 @@ body{
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin: 1vh 0;
+    margin: 0;
 }
 body > header {
     height: 4em;
@@ -51,6 +53,11 @@ body > header {
     flex: row;
     padding: 0 1em;
     width: 100%;
+    position: sticky;
+    top: 0;
+    padding-top: 1vh;
+    background-color: var(--contrast-color);
+    z-index: 99;
 }
 body > header *{
     height: 100%;
@@ -69,6 +76,9 @@ body > header nav ul li{
     height: fit-content;
     display: flex;
     align-self: center;
+}
+body > main, body > aside{
+    margin: 0 2vw;
 }
 nav i, footer i, .back-button i{
     margin: .3em;
