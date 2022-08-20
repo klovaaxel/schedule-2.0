@@ -1,0 +1,75 @@
+main{
+    flex: 60% 1 1;
+}
+main header {
+    position: sticky;
+    top: calc(4em + 1vh);
+
+    background-color: var(--contrast-color);
+}
+body aside {
+    position: sticky;
+    top: calc(4em + 1vh);
+    height: calc(100vh - (4em + 1vh));
+    flex: 10% 1 0;
+}
+.schedule h2, aside h3{
+    border-radius: 0;
+    padding-top: .5rem;
+}
+.current-week{
+    background-color: var(--info-color);
+}
+.week-assignment-list{
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+.schedule > ul > li:not(:last-of-type) {
+    padding-bottom: 3em;
+    border-bottom: 0.1rem solid #0004;
+}
+
+.schedule ul{
+    border-top: 0.5em solid var(--main-color);
+    background: var(--secondary-color)
+}
+.schedule ul li{
+    padding: 0 1em;
+}
+
+
+.assignments ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 90%;
+}
+.assignment {
+    padding: 1em 1em 1em 1em;
+    background: var(--secondary-color);
+    border-top: 0.5em solid var(--main-color);
+    margin: .5em 0;
+    transition: ease-in-out .2s;
+}
+.assignment:hover{
+    background: var(--main-color);
+    color: var(--contrast-color);
+}
+.assignment:hover > a{
+    color: var(--contrast-color);
+}
+.assignment:hover > a > p{
+    color: var(--accent-color);
+}
+.assignment > a{
+    color: var(--text-color);
+}
+.assignment > a > p {
+    margin: 0;
+    padding: 0;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
