@@ -1,12 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<link rel="stylesheet" href="../static/css/schedules.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/schedules.css') }}">
 {% endblock %}
 
 {% block content %}
-
-    <section class="schedules">
+    <main class="schedules">
         <header>
             <h1>Planering </h1>
             <form method="POST" action="{{ url_for('schedules') }}">
@@ -49,28 +48,24 @@
             {% for group in groups %}
             {% if group['id'] == selectedGroupID or selectedGroupID == 0  %}
             <div class="group" id="{{group.name}}">
-                <h2>{{group.name}}</h2>
+                <h2>{{groups[group].name}}</h2>
                 <div class="courses">
-                    {% for course in group.courses %}
+                    {% for course in groups[group].courses %}
                     <div class="course" id="{{course['id']}}">
                         <section>
-                            <a href="schedule/{{course['id']}}" type="course" id="{{course.name}}">
-                                <h3>{{course.name}}</h3>
-                                <p>{{course.weekplan[selectedWeek]}}</p>
+                            <a href="schedule/{{group}}/{{course}}?week={{selectedWeek}}" type="course" id="{{course.name}}">
+                                <h3>{{groups[group].courses[course].name}}</h3>
+                                <p>{{groups[group].courses[course].weekplan[selectedWeek]}}</p>
                             </a>
                         </section>
                         <aside class="assignments">
-                            <p>Assignment</p>
-                            {% for assignment in course.assignments %}
-                                {% for assignment in course.assignments %}
-                                    <div class="assignment">
-                                        <a href="assignment/{{assignment.id}}">
-                                            <h4>{{assignment.name}}</h4>
-                                            <p>{{assignment.brief}}</p>
-                                        </a>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
+                            <h6>Senaste uppgift:</h6>
+                                <div class="assignment">
+                                    <a href="assignment/{{groups[group].courses[course].assignments[-1].id}}">
+                                        <h4>{{groups[group].courses[course].assignments[-1].name}}</h4>
+                                        <p>{{groups[group].courses[course].assignments[-1].brief}}</p>
+                                    </a>
+                                </div>
                         </aside>
                     </div>
                     {% endfor %}
@@ -79,6 +74,5 @@
             {% endif %}
             {% endfor %}
         </div>
-
-    </section>
+    </main>
 {% endblock %}
