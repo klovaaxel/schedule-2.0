@@ -5,51 +5,74 @@
     <section class="schedule">
         <header>
             <h1>Planering </h1>
-            <div class="input"> <!-- Week -->
-                <label for="week-select">Vecka:</label>
+            <form method="POST" action="{{ url_for('schedule') }}">
+                <div class="input"> <!-- Week -->
+                    <label for="week-select">Vecka:</label>
 
-                <select name="week-select" id="week-select">
-                    <option value="{{current_week}}" id="current-week">Denna Vecka: ({{current_week}})</option>
-                    {% for week in schoolWeeks %}
-                    <option value="{{week}}">{{week}}</option>
-                    {% endfor %}
-                </select>
-            </div>
+                    <select name="week-select" id="week-select" onchange="this.form.submit()">
+                        <option value="{{currentWeek}}" id="current-week">Nuvarande</option>
+                        {% for week in schoolWeeks %}
+                        <option value="{{week}}"
+                            {% if week == selectedWeek %}
+                            selected
+                            {% endif %}
+                        >{{week}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-            <div class="input"> <!-- Group -->
-                <label for="group-select">Klass:</label>
+                <div class="input"> <!-- Group -->
+                    <label for="group-select">Klass:</label>
 
-                <select name="group" id="group-select">
-                    <option value="">-- Alla --</option>
-                    {% for group in groups %}
-                    <option value="{{group}}">{{group}}</option>
-                    {% endfor %}
-                </select>
-            </div>
+                    <select name="group-select" id="group-select" onchange="this.form.submit()">
+                        <option value='0' {% if selectedGroupID == 0 %} selected {% endif %}>-- Alla --</option>
+                        
+                        {% for group in groups %}
+                        <option value="{{group['id']}}" 
+                            {% if group['id'] == selectedGroupID %}
+                            selected
+                            {% endif %}
+                        >
+                        {{group.name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
         </header>
 
         <div class="groups">
             {% for group in groups %}
-            <div class="group" id="22te4i">
-                {% for course in group %}
-                <section>
-                    <a href="schedule/{{course.name}}" type="course" id="{{course.name}}">
-                        <h3>{{course.name}}</h3>
-                        <p>{{course.weekplan[current_week]}}</p>
-                    </a>
-                </section>
-
-                <aside class="assignments">
-                    <h3>Assignments</h3>
-                    {% for course in group %}
-                        <h4>{{name}}</h4>
-                        {% for assignment in course.assignments %}
-                            <a href="assignment/{{assignment.id}}">{{assignment.brief}}</a>
-                        {% endfor %}
+            {% if group['id'] == selectedGroupID or selectedGroupID == 0  %}
+            <div class="group" id="{{group.name}}">
+                <h2>{{group.name}}</h2>
+                <div class="courses">
+                    {% for course in group.courses %}
+                    <div class="course" id="{{course.id}}">
+                        <section>
+                            <a href="schedule/{{course.id}}" type="course" id="{{course.name}}">
+                                <h3>{{course.name}}</h3>
+                                <p>{{course.weekplan[selectedWeek]}}</p>
+                            </a>
+                        </section>
+                        <aside class="assignments">
+                            <p>Assignment</p>
+                            {% for assignment in course.assignments %}
+                                {% for assignment in course.assignments %}
+                                    <div class="assignment">
+                                        <a href="assignment/{{assignment.id}}">
+                                            <h4>{{assignment.name}}</h4>
+                                            <p>{{assignment.brief}}</p>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </aside>
+                    </div>
                     {% endfor %}
-                </aside>
-                {% endfor %}
+                </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
 
