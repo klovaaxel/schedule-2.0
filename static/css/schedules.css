@@ -1,9 +1,9 @@
-.schedule{
+.schedules{
     margin: 0 2vw;
     flex: 60% 1 1;
 }
 
-.schedule header{
+.schedules header{
     display: flex;
     align-items: center;
     gap: 1em;
@@ -11,7 +11,7 @@
     margin: 1em 0;
 }
 
-.schedule header h1{
+.schedules header h1{
     margin: 0
 }
 

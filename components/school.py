@@ -8,6 +8,7 @@ groups = [
         'courses': [
             {
                 'name': 'Webutveckling 2',
+                'id': 'weuweb02',
                 'weekplan': {
                     33:'Kolla på gitarr jäveln',
                     35:'Crasha docker'
@@ -22,6 +23,7 @@ groups = [
             },
             {
                 'name': 'Nätverksteknik 1&2',
+                'id': 'nainar',
                 'weekplan': {
                     33:'Uppstart uppkopplade slipsar och gräsmattor',
                 },
@@ -41,6 +43,7 @@ groups = [
         'courses': [
             {
                 'name': 'Webutveckling 1',
+                'id': 'weuweb01',
                 'weekplan': {
                     33:'Kolla på HTMLDOG',
                     35:'Sätta Hotpink på allt'

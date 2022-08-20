@@ -1,11 +1,15 @@
 {% extends 'layout.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="../static/css/schedules.css">
+{% endblock %}
+
 {% block content %}
 
-    <section class="schedule">
+    <section class="schedules">
         <header>
             <h1>Planering </h1>
-            <form method="POST" action="{{ url_for('schedule') }}">
+            <form method="POST" action="{{ url_for('schedules') }}">
                 <div class="input"> <!-- Week -->
                     <label for="week-select">Vecka:</label>
 
@@ -48,9 +52,9 @@
                 <h2>{{group.name}}</h2>
                 <div class="courses">
                     {% for course in group.courses %}
-                    <div class="course" id="{{course.id}}">
+                    <div class="course" id="{{course['id']}}">
                         <section>
-                            <a href="schedule/{{course.id}}" type="course" id="{{course.name}}">
+                            <a href="schedule/{{course['id']}}" type="course" id="{{course.name}}">
                                 <h3>{{course.name}}</h3>
                                 <p>{{course.weekplan[selectedWeek]}}</p>
                             </a>
