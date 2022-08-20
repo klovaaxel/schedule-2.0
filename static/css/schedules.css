@@ -1,5 +1,4 @@
 .schedules{
-    margin: 0 2vw;
     flex: 60% 1 1;
 }
 
@@ -31,6 +30,7 @@
     width: 15em;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .course {
     color: inherit;
@@ -51,6 +51,15 @@
 
 .assignment {
     color: var(--contrast-color);
-    background-color: var(--alarm-color);
+    background-color: var(--main-color);
+    padding: .25em .5em;
+}
+.assignment p, .assignment h4{
+    margin: 0;
+}
+
+.course:hover .assignment {
+    color: var(--text-color);
+    background-color: var(--secondary-color);
     padding: .25em .5em;
 }
