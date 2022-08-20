@@ -1,0 +1,56 @@
+.schedule{
+    margin: 0 2vw;
+    flex: 60% 1 1;
+}
+
+.schedule header{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+.schedule header h1{
+    margin: 0
+}
+
+.group{
+    border-top: 0.5em solid var(--main-color);
+    background-color: var(--secondary-color);
+    padding: 1em;
+    margin: 0.5em 0;
+}
+
+.courses{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+ }
+.course{
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+}
+.course {
+    color: inherit;
+    text-decoration: none;
+    transition: ease-in-out .2s;
+    margin: 1em 1em;
+    padding: 1em 0;
+}
+.course a {
+    color: inherit;
+}
+.course:hover {
+    color: var(--contrast-color);
+    background: var(--main-color);
+    padding: 2em 1em;
+    margin: 0;
+}
+
+.assignment {
+    color: var(--contrast-color);
+    background-color: var(--alarm-color);
+    padding: .25em .5em;
+}

@@ -1,0 +1,120 @@
+:root {
+    --main-color: #4789c6;
+    --secondary-color: #deebf1;
+    --accent-color: #dead40;
+    --contrast-color: #fff;
+    --alarm-color: #da0646;
+}
+
+/*General*/
+*{
+    max-width: 100%;
+    border-radius: .1em;
+}
+::-moz-selection { /* Code for Firefox */
+    color: var(--contrast-color);
+    background: var(--main-color);
+}
+::selection {
+    color: var(--contrast-color);
+    background: var(--main-color);
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/*General List styling*/
+footer ul, 
+footer ol, 
+footer dl, 
+.schedule > ul, 
+.schedule > ol, 
+.schedule > dl, 
+nav > ul, 
+nav > ol, 
+nav > dl{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*Basic page structure styling*/
+body{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vh 0;
+}
+body > header {
+    height: 4em;
+    display: flex;
+    flex: row;
+    padding: 0 1em;
+    width: 100%;
+}
+body > header *{
+    height: 100%;
+}
+body > header nav{
+    flex: 100% 1 1;
+    display: flex;
+    justify-content: flex-end;
+}
+body > header nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 1vmax;
+}
+body > header nav ul li{
+    height: fit-content;
+    display: flex;
+    align-self: center;
+}
+nav i, footer i, .back-button i{
+    margin: .3em;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+nav i:hover, footer i:hover, .back-button i:hover{
+    color: var(--contrast-color);
+    background: var(--main-color);
+    padding: .3em;
+    margin: 0;
+}
+footer{
+    height: 5em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+footer .social{
+    flex:  100% 1 1;
+    display: flex;
+    justify-content: center;
+}
+footer .social ul{
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}
+footer .social ul li{
+    height: fit-content;
+    display: flex;
+    align-self: center;
+}
+.input {
+    background-color: var(--main-color);
+    color: var(--contrast-color);
+    font-weight: bold;
+    padding: .5em;
+    display: inline-block;
+    text-decoration: none;
+    margin: .5em 0;
+}
+.input select, .input select:hover, .input select:active, .input select:focus-visible {
+    border: none;
+    background-color: inherit;
+    font-weight: inherit;
+    color: var(--contrast-color);
+    font-size: inherit;
+}
