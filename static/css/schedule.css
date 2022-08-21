@@ -73,3 +73,7 @@ body aside {
     font-weight: bold;
 }
 
+.assignment.overdue{
+    border-top: 0.5em solid grey;
+}
+

@@ -28,7 +28,7 @@
     <h3>Uppgifter</h3>
     <ul>
         {% for assignment in course['assignments'] %}
-        <li class = "assignment">
+        <li class = "assignment {% if schoolWeeks.index(assignment['end-week']) < schoolWeeks.index(selectedWeek) %}overdue{% endif %}">
             <a href="{{assignment.link}}">
                 <p>
                     {% if assignment['start-week'] != '' %}

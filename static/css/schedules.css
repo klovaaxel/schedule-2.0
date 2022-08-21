@@ -54,8 +54,17 @@
     background-color: var(--main-color);
     padding: .25em .5em;
 }
-.assignment p, .assignment h4{
+.assignment p, .assignment header, .assignment h4{
     margin: 0;
+}
+
+.assignment header{
+    display: flex;
+    justify-content: space-between;
+    align-items:  start;
+}
+.assignment aside{
+    font-size: .9em;
 }
 
 .course:hover .assignment {

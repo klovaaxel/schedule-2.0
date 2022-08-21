@@ -62,8 +62,18 @@
                             <h6>Senaste uppgift:</h6>
                                 <div class="assignment">
                                     <a href="assignment/{{groups[group].courses[course].assignments[-1].id}}">
-                                        <h4>{{groups[group].courses[course].assignments[-1].name}}</h4>
-                                        <p>{{groups[group].courses[course].assignments[-1].brief}}</p>
+                                        <header>
+                                            <h4>{{groups[group].courses[course].assignments[0].name}}</h4>
+                                            <aside>
+                                                {% if groups[group].courses[course].assignments[0]['start-week'] != '' %}
+                                                    v.{{groups[group].courses[course].assignments[0]['start-week']}} - 
+                                                {% endif %}
+                                                {% if groups[group].courses[course].assignments[0]['end-week'] != '' %}
+                                                    v.{{groups[group].courses[course].assignments[0]['end-week']}}
+                                                {% endif %}
+                                            </aside>
+                                        </header>
+                                        <p>{{groups[group].courses[course].assignments[0].brief}}</p>
                                     </a>
                                 </div>
                         </aside>

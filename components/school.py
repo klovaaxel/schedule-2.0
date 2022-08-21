@@ -26,8 +26,8 @@ groups = {
                         {
                             'name' : 'Drupal',
                             'brief' : 'En stor och ful sida',
-                            'start-week': 33,
-                            'end-week': 34,
+                            'start-week': 34,
+                            'end-week': 35,
                         },
                         {
                             'name' : 'Drupal',
@@ -85,8 +85,8 @@ groups = {
                         {
                             'name' : 'Projektet',
                             'brief' : 'Grupparbete för fan',
-                            'start-week': 33,
-                            'end-week': 34,
+                            'start-week': 36,
+                            'end-week': 37,
                         },
                     ]
 
