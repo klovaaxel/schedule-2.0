@@ -30,13 +30,13 @@
                     <select name="group-select" id="group-select" onchange="this.form.submit()">
                         <option value='0' {% if selectedGroupID == 0 %} selected {% endif %}>-- Alla --</option>
                         
-                        {% for group in groups %}
-                        <option value="{{group['id']}}" 
-                            {% if group['id'] == selectedGroupID %}
+                        {% for key in groups.keys() %}
+                        <option value="{{groups[key]['id']}}" 
+                            {% if groups[key]['id'] == selectedGroupID %}
                             selected
                             {% endif %}
                         >
-                        {{group.name}}
+                        {{groups[key].name}}
                         </option>
                         {% endfor %}
                     </select>
@@ -46,8 +46,8 @@
 
         <div class="groups">
             {% for group in groups %}
-            {% if group['id'] == selectedGroupID or selectedGroupID == 0  %}
-            <div class="group" id="{{group.name}}">
+            {% if groups[group]['id'] == selectedGroupID or selectedGroupID == 0  %}
+            <div class="group" id="{{groups[group].name}}">
                 <h2>{{groups[group].name}}</h2>
                 <div class="courses">
                     {% for course in groups[group].courses %}
