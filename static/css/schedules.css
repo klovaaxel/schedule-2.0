@@ -2,12 +2,18 @@
     flex: 60% 1 1;
 }
 
-.schedules header{
+.schedules > header{
     display: flex;
     align-items: center;
     gap: 1em;
     flex-wrap: wrap;
-    margin: 1em 0;
+    margin: 0 0 1em 0;
+    position: sticky;
+    top: calc(4em + 1vh);
+    background-color: var(--contrast-color)
+}
+.schedules > header > form{
+    margin: 0;
 }
 
 .schedules header h1{
