@@ -67,7 +67,7 @@ def schedule(groupID, course):
     return render_template('schedule.html',
         course = groups[groupID]['courses'][course],
         selectedWeek = selectedWeek,
-        schoolWeeks = schoolWeeks
+        schoolWeeks = schoolWeeks + ['']
     )
 
 if __name__ == '__main__':
