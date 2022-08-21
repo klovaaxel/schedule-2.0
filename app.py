@@ -2,22 +2,7 @@ from flask import Flask, render_template, request
 import webbrowser
 
 from components.school import schoolWeeks, groups
-from components.general import currentWeek
-
-
-
-def sortAssignments(selectedWeek):
-
-    schoolWeeksOrder = schoolWeeks[schoolWeeks.index(selectedWeek):] + schoolWeeks[:schoolWeeks.index(selectedWeek)]
-    schoolWeeksOrder.append('')
-
-    for groupID in groups: 
-        group = groups[groupID]
-        for courseID in group['courses']:
-            course = group['courses'][courseID]
-
-            course['assignments'].sort(key=lambda x: schoolWeeksOrder.index(x['end-week']), reverse=False)
-
+from components.general import currentWeek, sortAssignments
 
 app = Flask(__name__)
 
@@ -45,6 +30,9 @@ def schedules():
         selectedGroupID = groupIDParam
 
     selectedGroupID = int(selectedGroupID)
+
+    # Sort assingments so that closest to end is first
+    sortAssignments(selectedWeek)
 
     return render_template('schedules.html', 
         groups = groups,

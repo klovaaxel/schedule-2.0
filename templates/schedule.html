@@ -16,7 +16,7 @@
             <li id="{{week}}" {% if week == selectedWeek %} class="current-week"{% endif %}>
                 <h2>Vecka {{week}}</h2>
                 <div>
-                    {{course['weekplan'][week]}}
+                    {{course['weekplan'][week]|safe}}
                 </div>
             </li>
             {% endfor %}
