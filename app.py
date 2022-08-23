@@ -58,5 +58,37 @@ def schedule(groupID, course):
         schoolWeeks = schoolWeeks + ['']
     )
 
+@app.route('/schedule/<string:groupID>/<string:course>/view/schedule')
+def scheduleSimple(groupID, course):     
+
+    selectedWeek = request.args.get('week')
+    if selectedWeek == None:
+        selectedWeek = currentWeek
+    selectedWeek = int(selectedWeek)
+
+    sortAssignments(selectedWeek) 
+
+    return render_template('schedule-simple.html',
+        course = groups[groupID]['courses'][course],
+        selectedWeek = selectedWeek,
+        schoolWeeks = schoolWeeks + ['']
+    )
+
+@app.route('/schedule/<string:groupID>/<string:course>/view/assignments')
+def assignmentsSimple(groupID, course):     
+
+    selectedWeek = request.args.get('week')
+    if selectedWeek == None:
+        selectedWeek = currentWeek
+    selectedWeek = int(selectedWeek)
+
+    sortAssignments(selectedWeek) 
+
+    return render_template('assignments-simple.html',
+        course = groups[groupID]['courses'][course],
+        selectedWeek = selectedWeek,
+        schoolWeeks = schoolWeeks + ['']
+    )
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

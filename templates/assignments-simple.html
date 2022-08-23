@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/schedule.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="assignments">
+        <h1>Uppgifter {{course.name}}</h1>
+        <ul>
+            {% for assignment in course['assignments'] %}
+            <li class = "assignment {% if schoolWeeks.index(assignment['end-week']) < schoolWeeks.index(selectedWeek) %}overdue{% endif %}">
+                <a href="{{assignment.link}}">
+                    <p>
+                        {% if assignment['start-week'] != '' %}
+                            v.{{assignment['start-week']}} - 
+                        {% endif %}
+                        {% if assignment['end-week'] != '' %}
+                            v.{{assignment['end-week']}}
+                        {% endif %}
+                    </p>
+                    <h3>{{assignment.name}}</h3>
+                    <div>
+                        {{assignment.brief}}
+                    </div>            
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+
+<script src="{{ url_for('static',filename='js/schedule.js') }}"></script>
+{% endblock %}

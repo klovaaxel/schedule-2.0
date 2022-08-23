@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/schedule.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <header>
+        <h1>Loggbok {{course.name}}</h1>
+    </header>
+    
+    <section class="schedule">
+        <ul>
+            {% for week in course['weekplan'].keys() %}
+            <li id="{{week}}" {% if week == selectedWeek %} class="current-week"{% endif %}>
+                <h2>Vecka {{week}}</h2>
+                <div>
+                    {{course['weekplan'][week]|safe}}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+
+<script src="{{ url_for('static',filename='js/schedule.js') }}"></script>
+{% endblock %}
