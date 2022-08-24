@@ -4,8 +4,11 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/schedule.css') }}">
 {% endblock %}
 
+{% block header %}
+{% endblock %}
+
 {% block content %}
-<main>
+<main class="simple">
     <header>
         <h1>Loggbok {{course.name}}</h1>
     </header>

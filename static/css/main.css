@@ -91,6 +91,11 @@ nav i:hover, footer i:hover, .back-button i:hover{
     padding: .3em;
     margin: 0;
 }
+
+.simple > header{
+    top: 0;
+}
+
 footer{
     height: 5em;
     display: flex;
